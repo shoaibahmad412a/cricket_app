@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Management</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cricket/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Cricket Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'add_team' %}">Add Team</a></li>
+                <li><a href="{% url 'team_list' %}">Team List</a></li>
+                <li><a href="{% url 'match_list' %}">Match List</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+</body>
+</html>

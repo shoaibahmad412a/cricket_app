@@ -1,0 +1,36 @@
+{% extends 'cricket/base.html' %}
+
+{% block content %}
+<h2>Add a New Team</h2>
+
+<form method="post" action="{% url 'add_team' %}">
+    {% csrf_token %}
+
+    <!-- Display any form errors -->
+    {% if form.errors %}
+        <div class="form-errors">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <!-- Team Name -->
+    <label for="{{ form.name.id_for_label }}">Team Name:</label>
+    {{ form.name }}
+
+    <!-- City -->
+    <label for="{{ form.city.id_for_label }}">City:</label>
+    {{ form.city }}
+
+    <!-- Submit Button -->
+    <button type="submit">Add Team</button>
+</form>
+{% endblock %}
